@@ -1,8 +1,8 @@
 package com.sever.eventhubapi.eventhub.queue.sub;
 
-import com.sever.eventhubapi.eventhub.dto.MessageDto;
+import com.sever.eventhubapi.eventhub.dto.OrderPaymentMessageDto;
 
 public interface MessageReceiverInterface {
 
-    void receiveMessage(MessageDto messageDto);
+    void receiveMessage(OrderPaymentMessageDto paymentDto);
 }
