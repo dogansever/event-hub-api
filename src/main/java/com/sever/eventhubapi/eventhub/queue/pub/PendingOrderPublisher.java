@@ -10,14 +10,14 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class PendingMessagePublisher implements MessagePublisherInterface {
+public class PendingOrderPublisher implements MessagePublisherInterface {
 
     private final RabbitTemplate rabbitTemplate;
     private final RabbitMqProperties rabbitMqProperties;
 
     @Override
     public void sendMessage(OrderPaymentMessageDto message) {
-        log.info("Sending message {}", message);
+        log.info("PendingOrderPublisher.sendMessage:{}", message);
         rabbitTemplate.convertAndSend(rabbitMqProperties.topicExchangeNameMainExchange, rabbitMqProperties.routingKeyPendingMessages, message);
     }
 }

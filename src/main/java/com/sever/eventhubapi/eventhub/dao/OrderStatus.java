@@ -1,5 +1,5 @@
 package com.sever.eventhubapi.eventhub.dao;
 
 public enum OrderStatus {
-    PENDING, PAID, COMPLETED
+    PENDING, PAID, COMPLETED, PAYMENT_ERROR
 }

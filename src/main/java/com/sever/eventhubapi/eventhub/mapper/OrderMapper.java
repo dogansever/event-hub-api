@@ -8,6 +8,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface OrderMapper {
 
@@ -18,8 +20,11 @@ public interface OrderMapper {
 
     @Mapping(target="orderId", source = "id")
     @Mapping(target="orderStatus", source = "status")
-    OrderPaymentMessageDto toDto(OrderEntity entity);
+    OrderPaymentMessageDto toOrderPaymentMessageDto(OrderEntity entity);
 
     @Mapping(target="paymentStatus", source = "status")
-    OrderPaymentMessageDto toDto(PaymentEntity entity);
+    OrderPaymentMessageDto toOrderPaymentMessageDto(PaymentEntity entity);
+
+    OrderDto toDto(OrderEntity entity);
+    List<OrderDto> toDto(List<OrderEntity> entityList);
 }

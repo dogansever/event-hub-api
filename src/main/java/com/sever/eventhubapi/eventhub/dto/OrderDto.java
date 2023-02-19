@@ -7,6 +7,7 @@ import lombok.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Builder
 @Getter
@@ -22,4 +23,6 @@ public class OrderDto {
     @NotNull
     private BigDecimal totalPayment;
     private String status;
+    private LocalDateTime createTime;
+    private LocalDateTime updateTime;
 }

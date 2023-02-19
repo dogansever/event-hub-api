@@ -10,14 +10,14 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class ApprovedMessagePublisher implements MessagePublisherInterface {
+public class ConfirmedPaymentPublisher implements MessagePublisherInterface {
 
     private final RabbitTemplate rabbitTemplate;
     private final RabbitMqProperties rabbitMqProperties;
 
     @Override
     public void sendMessage(OrderPaymentMessageDto paymentDto) {
-        log.info("Sending message {}", paymentDto);
+        log.info("ConfirmedPaymentPublisher.sendMessage:{}", paymentDto);
         rabbitTemplate.convertAndSend(rabbitMqProperties.topicExchangeNameMainExchange, rabbitMqProperties.routingKeyApprovedMessages, paymentDto);
     }
 }

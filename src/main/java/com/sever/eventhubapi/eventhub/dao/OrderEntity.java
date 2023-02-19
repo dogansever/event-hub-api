@@ -1,6 +1,9 @@
 package com.sever.eventhubapi.eventhub.dao;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -8,9 +11,12 @@ import java.time.LocalDateTime;
 
 import static javax.persistence.GenerationType.AUTO;
 
+@Builder
 @Entity
 @Table(name = "T_ORDER")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class OrderEntity {
 
     @Id

@@ -21,6 +21,9 @@ public class PaymentEntity {
     private Long orderId;
 
     @Column
+    private Integer chargeAttemptCount;
+
+    @Column
     private BigDecimal totalPayment;
 
     @Column
@@ -35,6 +38,7 @@ public class PaymentEntity {
 
     @PrePersist
     void prePersist() {
+        chargeAttemptCount = 0;
         createTime = LocalDateTime.now();
         status = PaymentStatus.WAITING;
     }
@@ -42,5 +46,10 @@ public class PaymentEntity {
     @PreUpdate
     void preUpdate() {
         updateTime = LocalDateTime.now();
+    }
+
+    public int updateChargeAttemptCount() {
+        chargeAttemptCount++;
+        return chargeAttemptCount;
     }
 }
