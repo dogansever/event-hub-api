@@ -23,7 +23,7 @@ public class PendingOrderReceiver implements MessageReceiverInterface {
     private final OrderMapper orderMapper;
     private final MessagePublisherInterface confirmedPaymentPublisher;
 
-    @RabbitListener(queues = {"${custom.rabbitmq.queueName:pending-message-queue}"})
+    @RabbitListener(queues = {"${custom.rabbitmq.queueNameForPendingOrder:pending-order-queue}"})
     @Override
     public void receiveMessage(OrderPaymentMessageDto message) {
         log.info("PendingOrderReceiver.receiveMessage:{}", message);

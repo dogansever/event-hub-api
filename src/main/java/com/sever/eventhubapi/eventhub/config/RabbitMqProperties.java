@@ -9,22 +9,22 @@ public class RabbitMqProperties {
     @Value("${custom.rabbitmq.topicExchangeName:main-exchange}")
     public String topicExchangeNameMainExchange;
 
-    @Value("${custom.rabbitmq.queueName:pending-message-queue}")
+    @Value("${custom.rabbitmq.queueNameForPendingOrder:pending-order-queue}")
     public String queueNamePendingMessages;
 
-    @Value("${custom.rabbitmq.queueName2:approved-message-queue}")
+    @Value("${custom.rabbitmq.queueNameApprovedPayment:approved-payment-queue}")
     public String queueNameApprovedMessages;
 
-    @Value("${custom.rabbitmq.routingKeyPattern:pending.#}")
+    @Value("${custom.rabbitmq.routingKeyPatternForPendingOrder:pending.#}")
     public String routingKeyPatternPendingMessages;
 
-    @Value("${custom.rabbitmq.routingKeyPattern:approved.#}")
+    @Value("${custom.rabbitmq.routingKeyPatternForApprovedPayment:approved.#}")
     public String routingKeyPatternApprovedMessages;
 
-    @Value("${custom.rabbitmq.routingKey:pending.route1}")
+    @Value("${custom.rabbitmq.routingKeyForPendingOrder:pending.route}")
     public String routingKeyPendingMessages;
 
-    @Value("${custom.rabbitmq.routingKey:approved.route1}")
+    @Value("${custom.rabbitmq.routingKeyForApprovedPayment:approved.route}")
     public String routingKeyApprovedMessages;
 
 

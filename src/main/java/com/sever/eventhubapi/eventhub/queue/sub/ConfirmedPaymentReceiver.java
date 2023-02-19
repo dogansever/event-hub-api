@@ -19,7 +19,7 @@ public class ConfirmedPaymentReceiver implements MessageReceiverInterface {
 
     private final OrderRepository orderRepository;
 
-    @RabbitListener(queues = {"${custom.rabbitmq.queueName:approved-message-queue}"})
+    @RabbitListener(queues = {"${custom.rabbitmq.queueName:approved-payment-queue}"})
     @Override
     public void receiveMessage(OrderPaymentMessageDto message) {
         log.info("ConfirmedPaymentReceiver.receiveMessage:{}", message);

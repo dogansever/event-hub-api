@@ -27,3 +27,13 @@ spring:
           max-attempts: 2
           max-interval: 10s
           multiplier: 2
+
+custom:
+  rabbitmq:
+    topicExchangeName: main-exchange
+    queueNameForPendingOrder: pending-order-queue
+    queueNameApprovedPayment: approved-payment-queue
+    routingKeyForPendingOrder: pending.route
+    routingKeyPatternForPendingOrder: pending.#
+    routingKeyForApprovedPayment: approved.route
+    routingKeyPatternForApprovedPayment: approved.#
