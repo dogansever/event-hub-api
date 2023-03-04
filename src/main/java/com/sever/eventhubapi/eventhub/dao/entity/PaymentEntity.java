@@ -1,9 +1,7 @@
-package com.sever.eventhubapi.eventhub.dao;
+package com.sever.eventhubapi.eventhub.dao.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
+import com.sever.eventhubapi.eventhub.dao.PaymentStatus;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -11,27 +9,27 @@ import java.time.LocalDateTime;
 
 import static javax.persistence.GenerationType.AUTO;
 
-@Builder
 @Entity
-@Table(name = "T_ORDER")
+@Table(name = "T_PAYMENT")
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class OrderEntity {
+public class PaymentEntity {
 
     @Id
     @GeneratedValue(strategy = AUTO)
     private Long id;
 
-    @Column
-    private String detail;
-
     @Column(nullable = false)
+    private Long orderId;
+
+    @Column
+    private Integer chargeAttemptCount;
+
+    @Column
     private BigDecimal totalPayment;
 
-    @Column(nullable = false)
+    @Column
     @Enumerated(EnumType.STRING)
-    private OrderStatus status;
+    private PaymentStatus status;
 
     @Column(nullable = false)
     private LocalDateTime createTime;
@@ -41,12 +39,18 @@ public class OrderEntity {
 
     @PrePersist
     void prePersist() {
+        chargeAttemptCount = 0;
         createTime = LocalDateTime.now();
-        status = OrderStatus.PENDING;
+        status = PaymentStatus.WAITING;
     }
 
     @PreUpdate
     void preUpdate() {
         updateTime = LocalDateTime.now();
+    }
+
+    public int updateChargeAttemptCount() {
+        chargeAttemptCount++;
+        return chargeAttemptCount;
     }
 }

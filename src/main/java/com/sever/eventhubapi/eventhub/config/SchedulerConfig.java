@@ -1,6 +1,8 @@
 package com.sever.eventhubapi.eventhub.config;
 
 import com.sever.eventhubapi.eventhub.dao.*;
+import com.sever.eventhubapi.eventhub.dao.entity.OrderEntity;
+import com.sever.eventhubapi.eventhub.dao.entity.PaymentEntity;
 import com.sever.eventhubapi.eventhub.exception.AssertionUtil;
 import com.sever.eventhubapi.eventhub.exception.BaseException;
 import com.sever.eventhubapi.eventhub.exception.PaymentDeclinedException;

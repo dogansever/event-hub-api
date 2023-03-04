@@ -1,7 +1,7 @@
 package com.sever.eventhubapi.eventhub.mapper;
 
-import com.sever.eventhubapi.eventhub.dao.OrderEntity;
-import com.sever.eventhubapi.eventhub.dao.PaymentEntity;
+import com.sever.eventhubapi.eventhub.dao.entity.OrderEntity;
+import com.sever.eventhubapi.eventhub.dao.entity.PaymentEntity;
 import com.sever.eventhubapi.eventhub.dto.OrderDto;
 import com.sever.eventhubapi.eventhub.dto.OrderPaymentMessageDto;
 import org.mapstruct.Mapper;

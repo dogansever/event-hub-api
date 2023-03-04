@@ -1,34 +1,39 @@
-package com.sever.eventhubapi.eventhub.dao;
+package com.sever.eventhubapi.eventhub.dao.entity;
 
+import com.sever.eventhubapi.eventhub.dao.OrderStatus;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import static javax.persistence.GenerationType.AUTO;
 
+@Builder
 @Entity
-@Table(name = "T_PAYMENT")
+@Table(name = "T_ORDER")
 @Data
-public class PaymentEntity {
+@AllArgsConstructor
+@NoArgsConstructor
+public class OrderEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = AUTO)
     private Long id;
 
+    @Column
+    private String detail;
+
     @Column(nullable = false)
-    private Long orderId;
-
-    @Column
-    private Integer chargeAttemptCount;
-
-    @Column
     private BigDecimal totalPayment;
 
-    @Column
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private PaymentStatus status;
+    private OrderStatus status;
 
     @Column(nullable = false)
     private LocalDateTime createTime;
@@ -38,18 +43,12 @@ public class PaymentEntity {
 
     @PrePersist
     void prePersist() {
-        chargeAttemptCount = 0;
         createTime = LocalDateTime.now();
-        status = PaymentStatus.WAITING;
+        status = OrderStatus.PENDING;
     }
 
     @PreUpdate
     void preUpdate() {
         updateTime = LocalDateTime.now();
-    }
-
-    public int updateChargeAttemptCount() {
-        chargeAttemptCount++;
-        return chargeAttemptCount;
     }
 }

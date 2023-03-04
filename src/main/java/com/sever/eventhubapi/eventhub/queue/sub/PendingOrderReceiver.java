@@ -1,6 +1,6 @@
 package com.sever.eventhubapi.eventhub.queue.sub;
 
-import com.sever.eventhubapi.eventhub.dao.PaymentEntity;
+import com.sever.eventhubapi.eventhub.dao.entity.PaymentEntity;
 import com.sever.eventhubapi.eventhub.dao.PaymentRepository;
 import com.sever.eventhubapi.eventhub.dao.PaymentStatus;
 import com.sever.eventhubapi.eventhub.dto.OrderPaymentMessageDto;

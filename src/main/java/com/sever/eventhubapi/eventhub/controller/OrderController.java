@@ -1,6 +1,6 @@
 package com.sever.eventhubapi.eventhub.controller;
 
-import com.sever.eventhubapi.eventhub.dao.OrderEntity;
+import com.sever.eventhubapi.eventhub.dao.entity.OrderEntity;
 import com.sever.eventhubapi.eventhub.dao.OrderRepository;
 import com.sever.eventhubapi.eventhub.dao.OrderStatus;
 import com.sever.eventhubapi.eventhub.dto.OrderDto;
